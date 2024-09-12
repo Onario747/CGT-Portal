@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGT Portal</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="styles/dashboard.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
+  </head>
+  <body>
+    <!-- NavBar -->
+
+    <header class="navbar padding-x">
+      <div class="navbar-container">
+        <div class="nav-left">
+          <div class="navbar-brand">
+            <span class="brand-title"
+              >C.<span class="brand-highlight">G</span>.T Portal</span
+            >
+          </div>
+          <button>Explore more</button>
+        </div>
+
+        <div class="nav-right">
+          <div class="nav-icons">
+            <ion-icon name="notifications-outline"></ion-icon>
+            <ion-icon name="settings-outline"></ion-icon>
+            <ion-icon name="person-outline"></ion-icon>
+          </div>
+          <div class="search-container">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative">
+              <div class="icon-container">
+                <ion-icon name="search-outline" class="icon"></ion-icon>
+              </div>
+              <input
+                id="search"
+                name="search"
+                class="search-input"
+                placeholder="Search"
+                type="search"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Horizontal nav -->
+    <div class="flex-layout">
+      <div class="horizontal-container">
+        <div class="left-side-nav">
+          <div class="left-side-nav-links">
+            <div class="left-side-top-link">
+              <ion-icon name="person-outline"></ion-icon>
+              <ion-icon name="settings-outline"></ion-icon>
+            </div>
+            <div class="left-side-bottom-link">
+              <ion-icon name="headset-outline"></ion-icon>
+              <ion-icon name="log-out-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div class="horizontal-nav">
+          <div class="profile-info"></div>
+          <nav class="navlinks">
+            <div class="top-link">
+              <a href="/portal/dashboard.html">
+                <ion-icon name="grid-outline"></ion-icon>
+                <span>Dashboard</span>
+              </a>
+              <a href="/portal/filemanager.html" class="active">
+                <ion-icon name="folder-outline"></ion-icon>
+                <span>File Manager</span>
+              </a>
+              <a href="/portal/dashboard.html">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <span>Announcements</span>
+              </a>
+              <a href="/portal/dashboard.html">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>Events</span>
+              </a>
+              <a href="/portal/dashboard.html">
+                <ion-icon name="albums-outline"></ion-icon>
+                <span>Tasks</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <main class="main-container">
+        <h1>Hello</h1>
+      </main>
+    </div>
+
+    <!-- Scripts -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
