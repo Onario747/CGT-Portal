@@ -49,41 +49,6 @@
           </div>
         </div>
       </div>
-      <div class="mobile-nav padding-x">
-        <div class="mobile-nav-search">
-          <label for="search" class="sr-only">Search</label>
-          <div class="relative">
-            <div class="icon-container">
-              <ion-icon name="search-outline" class="icon"></ion-icon>
-            </div>
-            <input
-              id="search"
-              name="search"
-              class="search-input"
-              placeholder="Search"
-              type="search"
-            />
-          </div>
-        </div>
-        <div class="mobile-nav-links">
-          <a href="/portal/filemanager.html">
-            <ion-icon name="folder-outline"></ion-icon>
-            <span>File Manager</span>
-          </a>
-          <a href="/portal/dashboard.html">
-            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-            <span>Announcements</span>
-          </a>
-          <a href="/portal/dashboard.html">
-            <ion-icon name="calendar-outline"></ion-icon>
-            <span>Events</span>
-          </a>
-          <a href="/portal/dashboard.html">
-            <ion-icon name="albums-outline"></ion-icon>
-            <span>Tasks</span>
-          </a>
-        </div>
-      </div>
     </header>
 
     <!-- Horizontal nav -->
@@ -114,11 +79,11 @@
                 <span>Web Developer</span>
               </div>
             </div>
-            <div class="profile-icons">
+            <!-- <div class="profile-icons">
               <ion-icon name="logo-instagram"></ion-icon>
               <ion-icon name="logo-facebook"></ion-icon>
               <ion-icon name="logo-linkedin"></ion-icon>
-            </div>
+            </div> -->
             <button>
               <ion-icon name="create-outline"></ion-icon>
               <span>Edit Profile</span>
@@ -148,6 +113,9 @@
               </a>
             </div>
           </nav>
+        </div>
+        <div class="logins-container">
+          <span>All Logins</span>
         </div>
       </div>
 
@@ -192,13 +160,13 @@
               <h2 class="section-title">Daily Checks</h2>
               <div class="check-container">
                 <div class="check-item">
-                  <button class="check-button">Check In</button>
+                  <button class="check-button">Daily Check In</button>
                   <span class="check-time">Time: -/-</span>
                 </div>
-                <div class="check-item">
+                <!-- <div class="check-item">
                   <button class="check-button">Check Out</button>
                   <span class="check-time">Time: -/-</span>
-                </div>
+                </div> -->
               </div>
             </section>
             <section class="appeal-section">
@@ -218,59 +186,9 @@
               </div>
             </section>
           </div>
-        </div>
-        <div class="dashboard-grid-2">
-          <section class="quick-action-section">
-            <h2 class="section-title">Quick Action</h2>
-            <div class="quick-action-container">
-              <div class="upload-container">
-                <ion-icon name="cloud-upload-outline"></ion-icon>
-                <p class="upload-text">Upload a file to server</p>
-                <input type="file" id="file-upload-1" class="file-input" />
-                <label for="file-upload-1" class="file-label"
-                  >Choose File</label
-                >
-              </div>
-              <div class="upload-container">
-                <ion-icon name="cloud-upload-outline"></ion-icon>
-                <p class="upload-text">Upload a file to server</p>
-                <input type="file" id="file-upload-2" class="file-input" />
-                <label for="file-upload-2" class="file-label"
-                  >Choose File</label
-                >
-              </div>
-            </div>
-          </section>
-          <section class="quick-links-section">
-            <h2 class="section-title">Quick Links</h2>
-            <div class="quick-links-container">
-              <a href="/"><span>View Logins</span> </a>
-              <a href="/"><span>File Server</span></a>
-              <a href="/"><span>Backup</span></a>
-              <a href="/"><span>Storage Logs</span></a>
-            </div>
-          </section>
-        </div>
-        <div class="dashboard-grid-3">
           <section class="events-section">
             <h2 class="section-title">Events</h2>
             <div class="events-container">
-              <div class="event-item">
-                <div class="event-date">
-                  <span class="event-month">SEP</span>
-                  <span class="event-day">15</span>
-                </div>
-                <div class="event-details">
-                  <h3 class="event-title">Team Building Workshop</h3>
-                  <p class="event-description">
-                    Join us for a day of team-building activities and fun!
-                  </p>
-                  <span class="event-time"
-                    ><ion-icon name="time-outline"></ion-icon> 09:00 AM - 05:00
-                    PM</span
-                  >
-                </div>
-              </div>
               <div class="event-item">
                 <div class="event-date">
                   <span class="event-month">OCT</span>
@@ -306,8 +224,98 @@
               </div>
             </div>
           </section>
+        </div>
+        <div class="dashboard-grid-2">
+          <section class="quick-action-section">
+            <h2 class="section-title">Quick Action</h2>
+            <div class="quick-action-container">
+              <div class="upload-container">
+                <ion-icon name="cloud-upload-outline"></ion-icon>
+                <p class="upload-text">Upload a file to server</p>
+                <input type="file" id="file-upload-1" class="file-input" />
+                <label for="file-upload-1" class="file-label"
+                  >Choose File</label
+                >
+              </div>
+              <div class="upload-container">
+                <ion-icon name="cloud-upload-outline"></ion-icon>
+                <p class="upload-text">Upload a file to server</p>
+                <input type="file" id="file-upload-2" class="file-input" />
+                <label for="file-upload-2" class="file-label"
+                  >Choose File</label
+                >
+              </div>
+            </div>
+          </section>
+          <section class="quick-links-section">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="quick-links-container">
+              <button class="logins-button"><span>View Logins</span></button>
+              <a href="/"><span>File Server</span></a>
+              <a href="/"><span>Backup</span></a>
+              <a href="/"><span>Storage Logs</span></a>
+            </div>
+          </section>
+        </div>
+        <div class="dashboard-grid-3">
           <section class="tasks-section">
             <h2 class="section-title">Tasks</h2>
+            <div class="tasks-container">
+              <div class="task-item">
+                <input type="checkbox" id="task1" class="task-checkbox" />
+                <label for="task1" class="task-label">
+                  <span class="task-title">Complete project proposal</span>
+                  <span class="task-due-date"
+                    ><ion-icon name="calendar-outline"></ion-icon> Due: Sep
+                    20</span
+                  >
+                </label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task2" class="task-checkbox" />
+                <label for="task2" class="task-label">
+                  <span class="task-title">Review client feedback</span>
+                  <span class="task-due-date"
+                    ><ion-icon name="calendar-outline"></ion-icon> Due: Sep
+                    22</span
+                  >
+                </label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task3" class="task-checkbox" />
+                <label for="task3" class="task-label">
+                  <span class="task-title">Prepare presentation slides</span>
+                  <span class="task-due-date"
+                    ><ion-icon name="calendar-outline"></ion-icon> Due: Sep
+                    25</span
+                  >
+                </label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task4" class="task-checkbox" />
+                <label for="task4" class="task-label">
+                  <span class="task-title">Schedule team meeting</span>
+                  <span class="task-due-date"
+                    ><ion-icon name="calendar-outline"></ion-icon> Due: Sep
+                    27</span
+                  >
+                </label>
+              </div>
+              <div class="task-item">
+                <input type="checkbox" id="task5" class="task-checkbox" />
+                <label for="task5" class="task-label">
+                  <span class="task-title">Submit monthly report</span>
+                  <span class="task-due-date"
+                    ><ion-icon name="calendar-outline"></ion-icon> Due: Sep
+                    30</span
+                  >
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="tasks-section">
+            <h2 class="section-title">Todo</h2>
             <div class="tasks-container">
               <div class="task-item">
                 <input type="checkbox" id="task1" class="task-checkbox" />
@@ -379,6 +387,42 @@
         <span>Tasks</span>
       </a>
     </nav>
+
+          <div class="mobile-nav padding-x">
+        <div class="mobile-nav-search">
+          <label for="search" class="sr-only">Search</label>
+          <div class="relative">
+            <div class="icon-container">
+              <ion-icon name="search-outline" class="icon"></ion-icon>
+            </div>
+            <input
+              id="search"
+              name="search"
+              class="search-input"
+              placeholder="Search"
+              type="search"
+            />
+          </div>
+        </div>
+        <div class="mobile-nav-links">
+          <a href="/portal/filemanager.html">
+            <ion-icon name="folder-outline"></ion-icon>
+            <span>File Manager</span>
+          </a>
+          <a href="/portal/dashboard.html">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            <span>Announcements</span>
+          </a>
+          <a href="/portal/dashboard.html">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <span>Events</span>
+          </a>
+          <a href="/portal/dashboard.html">
+            <ion-icon name="albums-outline"></ion-icon>
+            <span>Tasks</span>
+          </a>
+        </div>
+      </div>
 
     <!-- Scripts -->
     <script

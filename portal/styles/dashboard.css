@@ -43,7 +43,12 @@ body {
   color: #333;
 }
 
-.dashboard-grid-1,
+.dashboard-grid-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+}
+
 .dashboard-grid-2 {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -139,6 +144,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
   /* background-color: #fff; */
   border-radius: 8px;
   /* padding: 1rem; */
@@ -155,6 +162,11 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.check-button {
+  width: 100%;
+  padding: 20px 0;
 }
 
 .check-button:hover,
@@ -215,7 +227,8 @@ body {
   height: 100%;
 }
 
-.quick-links-container a {
+.quick-links-container a,
+button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,6 +238,9 @@ body {
   padding: 1rem;
   border-radius: 5px;
   font-family: var(--font-primary);
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .upload-container {
@@ -276,6 +292,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-top: 1.3rem;
 }
 
 .events-section,
@@ -284,7 +301,7 @@ body {
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .events-container,
@@ -296,6 +313,7 @@ body {
 
 .event-item {
   display: flex;
+  flex-direction: column;
   background-color: #f8f9fa;
   border-radius: 8px;
   overflow: hidden;
