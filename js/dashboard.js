@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   let startY, startHeight;
+  let isResizing = false; // Track if resizing is active
 
   function initResize(e, container) {
     e.preventDefault();
@@ -83,9 +84,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
       document.defaultView.getComputedStyle(container).height,
       10
     );
+    isResizing = true; // Set resizing to true when the drag starts
     document.documentElement.addEventListener(
       "mousemove",
-      (e) => resize(e, container),
+      (e) => handleResize(e, container),
       { passive: false }
     );
     document.documentElement.addEventListener("mouseup", stopResize, {
@@ -93,7 +95,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
     document.documentElement.addEventListener(
       "touchmove",
-      (e) => resize(e, container),
+      (e) => handleResize(e, container),
       { passive: false }
     );
     document.documentElement.addEventListener("touchend", stopResize, {
@@ -101,7 +103,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
-  function resize(e, container) {
+  function handleResize(e, container) {
+    if (!isResizing) return; // Prevent resizing when not intended
     const currentY = e.touches ? e.touches[0].clientY : e.clientY;
     const difference = startY - currentY;
     const maxHeight = getMaxHeight();
@@ -113,9 +116,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function stopResize() {
-    document.documentElement.removeEventListener("mousemove", resize);
+    isResizing = false; // Stop resizing
+    document.documentElement.removeEventListener("mousemove", handleResize);
     document.documentElement.removeEventListener("mouseup", stopResize);
-    document.documentElement.removeEventListener("touchmove", resize);
+    document.documentElement.removeEventListener("touchmove", handleResize);
     document.documentElement.removeEventListener("touchend", stopResize);
   }
 
