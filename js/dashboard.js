@@ -11,56 +11,97 @@ document.addEventListener("DOMContentLoaded", (event) => {
     return viewportHeight - bottomNavHeight;
   }
 
+  function setContainerHeight(container) {
+    const maxHeight = getMaxHeight();
+    const minHeight = 200;
+    let idealHeight = maxHeight * 0.6;
+    const clampedHeight = Math.max(minHeight, Math.min(idealHeight, maxHeight));
+    container.style.height = `${clampedHeight}px`;
+    container.style.maxHeight = `${maxHeight}px`;
+  }
 
   function setMobileNavHeight() {
-    const maxHeight = getMaxHeight();
+    setContainerHeight(mobileNav);
+  }
 
-    const minHeight = 200;
-
-    let idealHeight = maxHeight * 0.6;
-
-    const clampedHeight = Math.max(minHeight, Math.min(idealHeight, maxHeight));
-
-    mobileNav.style.height = `${clampedHeight}px`;
-    mobileNav.style.maxHeight = `${maxHeight}px`;
+  function setLoginsContainerHeight() {
+    setContainerHeight(loginsOverlay);
   }
 
   setMobileNavHeight();
+  setLoginsContainerHeight();
 
-  window.addEventListener("resize", setMobileNavHeight);
+  window.addEventListener("resize", () => {
+    setMobileNavHeight();
+    setLoginsContainerHeight();
+  });
+
+  function toggleContainers(showContainer, hideContainer) {
+    hideContainer.classList.remove(
+      "active-mobile-nav",
+      "active-logins-container"
+    );
+    showContainer.classList.add(
+      showContainer === mobileNav
+        ? "active-mobile-nav"
+        : "active-logins-container"
+    );
+    setContainerHeight(showContainer);
+  }
 
   menu.addEventListener("click", () => {
-    mobileNav.classList.toggle("active-mobile-nav");
+    if (loginsOverlay.classList.contains("active-logins-container")) {
+      toggleContainers(mobileNav, loginsOverlay);
+    } else {
+      mobileNav.classList.toggle("active-mobile-nav");
+      if (mobileNav.classList.contains("active-mobile-nav")) {
+        setMobileNavHeight();
+      }
+    }
     if (bottomNav) {
       bottomNav.classList.toggle("bottom-nav-hidden");
-    }
-
-    if (mobileNav.classList.contains("active-mobile-nav")) {
-      setMobileNavHeight();
     }
   });
 
   loginsBtn.addEventListener("click", () => {
-    loginsOverlay.classList.toggle("active-logins-container");
-    console.log("Clicked");
+    if (mobileNav.classList.contains("active-mobile-nav")) {
+      toggleContainers(loginsOverlay, mobileNav);
+    } else {
+      loginsOverlay.classList.toggle("active-logins-container");
+      if (loginsOverlay.classList.contains("active-logins-container")) {
+        setLoginsContainerHeight();
+      }
+    }
   });
 
   let startY, startHeight;
 
-  function initResize(e) {
+  function initResize(e, container) {
     e.preventDefault();
     startY = e.touches ? e.touches[0].clientY : e.clientY;
     startHeight = parseInt(
-      document.defaultView.getComputedStyle(mobileNav).height,
+      document.defaultView.getComputedStyle(container).height,
       10
     );
-    document.documentElement.addEventListener("mousemove", resize, false);
-    document.documentElement.addEventListener("mouseup", stopResize, false);
-    document.documentElement.addEventListener("touchmove", resize, false);
-    document.documentElement.addEventListener("touchend", stopResize, false);
+    document.documentElement.addEventListener(
+      "mousemove",
+      (e) => resize(e, container),
+      { passive: false }
+    );
+    document.documentElement.addEventListener("mouseup", stopResize, {
+      passive: false,
+    });
+    document.documentElement.addEventListener(
+      "touchmove",
+      (e) => resize(e, container),
+      { passive: false }
+    );
+    document.documentElement.addEventListener("touchend", stopResize, {
+      passive: false,
+    });
   }
 
-  function resize(e) {
+  function resize(e, container) {
     const currentY = e.touches ? e.touches[0].clientY : e.clientY;
     const difference = startY - currentY;
     const maxHeight = getMaxHeight();
@@ -68,20 +109,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
       maxHeight,
       Math.max(200, startHeight + difference)
     );
-    mobileNav.style.height = newHeight + "px";
+    container.style.height = newHeight + "px";
   }
 
   function stopResize() {
-    document.documentElement.removeEventListener("mousemove", resize, false);
-    document.documentElement.removeEventListener("mouseup", stopResize, false);
-    document.documentElement.removeEventListener("touchmove", resize, false);
-    document.documentElement.removeEventListener("touchend", stopResize, false);
+    document.documentElement.removeEventListener("mousemove", resize);
+    document.documentElement.removeEventListener("mouseup", stopResize);
+    document.documentElement.removeEventListener("touchmove", resize);
+    document.documentElement.removeEventListener("touchend", stopResize);
   }
 
-  const resizeHandle = document.createElement("div");
-  resizeHandle.className = "resize-handle";
-  mobileNav.prepend(resizeHandle);
+  function addResizeHandle(container) {
+    const resizeHandle = document.createElement("div");
+    resizeHandle.className = "resize-handle";
+    container.prepend(resizeHandle);
 
-  resizeHandle.addEventListener("mousedown", initResize, false);
-  resizeHandle.addEventListener("touchstart", initResize, false);
+    resizeHandle.addEventListener(
+      "mousedown",
+      (e) => initResize(e, container),
+      { passive: false }
+    );
+    resizeHandle.addEventListener(
+      "touchstart",
+      (e) => initResize(e, container),
+      { passive: false }
+    );
+  }
+
+  addResizeHandle(mobileNav);
+  addResizeHandle(loginsOverlay);
 });
