@@ -268,11 +268,13 @@ a {
   width: 100%;
 }
 
+
+
 .logins-container {
   position: fixed;
   width: 250px;
   background-color: #fff;
-  height: 80%;
+  height: 80vh;
   bottom: 0;
   left: 60px;
   border-top-left-radius: 10px;
@@ -559,9 +561,13 @@ ion-icon {
     padding-right: 4rem;
   }
 
-  .mobile-nav,
-  .logins-container {
+  .mobile-nav {
     display: none;
+  }
+
+  .logins-container {
+    width: 310px;
+    max-height: 90vh;
   }
 }
 
