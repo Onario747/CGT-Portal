@@ -33,6 +33,11 @@ body {
   padding: 2rem;
   max-width: var(--container-width);
   margin: 0 auto;
+  /* z-index: 1; */
+}
+
+ion-icon {
+  z-index: -1;
 }
 
 .main-heading {

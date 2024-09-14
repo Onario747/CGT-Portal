@@ -269,7 +269,7 @@ a {
 }
 
 .logins-container {
-  position: absolute;
+  position: fixed;
   width: 250px;
   background-color: #fff;
   height: 80%;
@@ -285,8 +285,14 @@ a {
   opacity: 0;
   transition: opacity 0.1s ease-out, transform 0.3s ease-out,
     visibility 0.3s ease-out;
+  z-index: 10;
 }
 
+ion-icon {
+  position: relative;
+  z-index: 5;
+  /* display: none; */
+}
 .active-logins-container {
   transform: translateY(0);
   visibility: visible;
@@ -472,9 +478,9 @@ a {
   bottom: 0;
   overflow: auto;
   max-height: 80vh; /* Limit the height to 80% of the viewport height */
-  visibility: hidden; 
-  opacity: 0; 
-  transform: translateY(100%); 
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(100%);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
   background: #fff;
   z-index: 1005;
@@ -488,7 +494,7 @@ a {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease; 
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .resize-handle {
@@ -505,7 +511,7 @@ a {
 }
 
 .resize-handle::before {
-  content: '';
+  content: "";
   width: 30px;
   height: 5px;
   background: #ccc;
